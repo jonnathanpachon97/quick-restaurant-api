@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  # Servicio para Redis (broker de mensajes)
+  redis:
+    image: redis:latest   # Usa la imagen oficial de Redis
+    ports:
+      - "6379:6379"       # Mapea el puerto 6379 del contenedor al de la máquina local
+    networks:
+      - app_network        # Red compartida con el servicio de Celery
+
+  # Servicio para el worker de Celery
+  celery:
+    build: .                # Usa el Dockerfile para construir la imagen de la app
+    command: celery -A app worker --loglevel=info   # Comando para iniciar Celery
+    environment:
+      - CELERY_BROKER=redis://redis:6379/0   # Celery se conecta a Redis
+    depends_on:
+      - redis              # Asegura que Redis esté listo antes de iniciar Celery
+    networks:
+      - app_network        # Usa la misma red para la comunicación interna
+
+networks:
+  app_network:             # Red compartida entre los contenedores
+    driver: bridge

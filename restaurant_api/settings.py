@@ -169,8 +169,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'  # URL de Redis, base de datos 0
 
 # Opcional: configuración del backend para almacenar los resultados de las tareas (si lo necesitas)
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+#CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
 
 # Para control de la cantidad de tareas simultáneas
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
+#CELERY_ACCEPT_CONTENT = ['json']
+#CELERY_TASK_SERIALIZER = 'json'
