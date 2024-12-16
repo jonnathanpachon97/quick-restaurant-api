@@ -92,18 +92,76 @@ Para comenzar, ejecuta el siguiente comando en tu terminal:
     python manage.py runserver
 
 9. Iniciar Redis:Asegúrate de tener Redis corriendo en tu máquina para que Celery funcione correctamente. Puedes iniciar Redis con el siguiente comando:
-        ```bash
+    ```bash
     redis-server
 
 10. Iniciar Celery: En una terminal diferente, corre el worker de Celery:
-        ```bash
+    ```bash
     celery -A restaurant_api worker --loglevel=info
 
 ## Endpoints
 
+- **Token Autenticación**
+
+POST http://127.0.0.1:8000/api/token/
+
+{
+  "username": "jonnathan",
+  "password": "apiquick"
+}
+
+POST http://127.0.0.1:8000/api/token/refresh/
+
+{
+    "refresh": "Generado en el endpoint token"
+}
+
+NOTA: recuerda que para ejecutar todos los endpoints requiere el token de authenticacion.
+
+- **Restaurants**
+
+POST http://127.0.0.1:8000/api/restaurants/
+GET http://127.0.0.1:8000/api/restaurants/
+GET http://127.0.0.1:8000/api/restaurants/{ID}/
+PUT http://127.0.0.1:8000/api/restaurants/{ID}/
+DELETE http://127.0.0.1:8000/api/restaurants/{ID}/
+FILTERS http://127.0.0.1:8000/api/restaurants/?ordering=rating
+
+- **Menu-items**
+
+POST http://127.0.0.1:8000/api/menu-items/
+GET http://127.0.0.1:8000/api/menu-items/
+GET http://127.0.0.1:8000/api/menu-items/{ID}/
+PUT http://127.0.0.1:8000/api/menu-items/{ID}/
+DELETE http://127.0.0.1:8000/api/menu-items/{ID}/
+FILTERS http://127.0.0.1:8000/api/menu-items/?category=Main Course
+
+- **Orders**
+
+POST http://127.0.0.1:8000/api/orders/
+GET http://127.0.0.1:8000/api/orders/
+GET http://127.0.0.1:8000/api/orders/{ID}/
+PUT http://127.0.0.1:8000/api/orders/{ID}/
+DELETE http://127.0.0.1:8000/api/orders/{ID}/
+FILTERS http://127.0.0.1:8000/api/orders/?created_at=2024-12-14 13:23:26.996199-05
+
+- **Users**
+
+POST http://127.0.0.1:8000/api/users/
+GET http://127.0.0.1:8000/api/users/
+GET http://127.0.0.1:8000/api/users/{ID}/
+PUT http://127.0.0.1:8000/api/users/{ID}/
+DELETE http://127.0.0.1:8000/api/users/{ID}/
+FILTERS http://127.0.0.1:8000/api/users/?first_name=Jonnathan
+
+- **Reports**
+POST http://localhost:8000/api/reports/generate-report/
+GET http://localhost:8000/api/reports/download-report/
+POST http://localhost:8000/api/users/bulk-upload/
+
 
 ## Swagger
 La API está documentada automáticamente con Swagger. Puedes acceder a la documentación interactiva de la API a través de la siguiente URL:
-        ```bash
+    ```bash
     [redis-server](http://127.0.0.1:8000/swagger/)
 
