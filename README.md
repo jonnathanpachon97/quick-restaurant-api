@@ -163,5 +163,5 @@ POST http://localhost:8000/api/users/bulk-upload/
 ## Swagger
 La API está documentada automáticamente con Swagger. Puedes acceder a la documentación interactiva de la API a través de la siguiente URL:
     ```bash
-    [redis-server](http://127.0.0.1:8000/swagger/)
+    http://127.0.0.1:8000/swagger/
 
