@@ -1,6 +1,7 @@
 # reports/urls.py
 from django.urls import path
-from .views import GenerateSalesReportView, DownloadSalesReportView
+from .generate_report import GenerateSalesReportView  # Importar desde generate-report.py
+from .download_report import DownloadSalesReportView  # Importar desde download-report.py
 
 urlpatterns = [
     # Ruta para generar el reporte

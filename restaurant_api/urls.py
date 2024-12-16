@@ -28,7 +28,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from reports.views import GenerateSalesReportView
+
 
 # Crear el esquema de autenticación JWT para Swagger
 swagger_jwt_security = openapi.Parameter(
@@ -75,8 +75,7 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc-docs'),
 
     # Incluir las URLs de reportes
-    path('api/reports/', include('reports.urls')),  # Incluimos las rutas de reportes
-    path('api/reports/generate_sales_report/<int:restaurant_id>/<int:month>/', GenerateSalesReportView.as_view(), name='generate_sales_report'),  
+    path('api/reports/', include('reports.urls')),  # Incluimos las rutas de reportes  
 ]
 
 
