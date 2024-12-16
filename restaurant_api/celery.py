@@ -12,8 +12,8 @@ app = Celery('restaurant_api', broker='redis://localhost:6379/0')
 # Usar la configuración predeterminada de Celery para los resultados
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
-# Cargar las tareas del módulo `tasks`
-app.autodiscover_tasks()
+# Autodiscovery de tareas en todas las apps registradas en INSTALLED_APPS
+app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 @app.task(bind=True)
 def debug_task(self):

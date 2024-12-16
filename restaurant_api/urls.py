@@ -28,6 +28,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from users.BulkUserUploadView import BulkUserUploadView 
 
 
 # Crear el esquema de autenticación JWT para Swagger
@@ -76,6 +77,8 @@ urlpatterns = [
 
     # Incluir las URLs de reportes
     path('api/reports/', include('reports.urls')),  # Incluimos las rutas de reportes  
+
+    path('api/users/bulk-upload/', BulkUserUploadView.as_view(), name='bulk-upload-users'),  # Endpoint para carga masiva
 ]
 
 
