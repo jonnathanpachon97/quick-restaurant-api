@@ -83,10 +83,10 @@ Para comenzar, ejecuta el siguiente comando en tu terminal:
 
 - Crear los datos de prueba:
 Crear los restaurantes
-    ```bash
+
     from restaurants.models import Restaurant
 
-# Crear algunos restaurantes de prueba
+- Crear algunos restaurantes de prueba
 restaurant1 = Restaurant.objects.create(
     name="Restaurant A",
     address="Address A, City",
@@ -143,10 +143,10 @@ restaurant5 = Restaurant.objects.create(
 )
 
 Crear los usuarios
-    ```bash
+
     from users.models import User
 
-# Crear 10 usuarios de prueba
+- Crear 10 usuarios de prueba
 users = []
 for i in range(1, 11):
     user = User.objects.create(
@@ -161,7 +161,7 @@ for i in range(1, 11):
     )
     users.append(user)
 
-# Verificar que los usuarios se crearon correctamente
+- Verificar que los usuarios se crearon correctamente
 for user in users:
     print(user.first_name, user.email)
 
@@ -169,7 +169,7 @@ Crear los menu-items
     ```bash
     from menu.models import MenuItem
 
-# Crear algunos elementos de menú de prueba
+- Crear algunos elementos de menú de prueba
 item1 = MenuItem.objects.create(name="Pizza", price=12.99)
 item2 = MenuItem.objects.create(name="Tacos", price=8.99)
 item3 = MenuItem.objects.create(name="Burger", price=10.99)
@@ -177,11 +177,11 @@ item4 = MenuItem.objects.create(name="Sushi", price=15.99)
 item5 = MenuItem.objects.create(name="Pasta", price=11.99)
 
 Crear las ordenes
-    ```bash
+
     from orders.models import Order
     from datetime import datetime, timedelta
 
-# Crear algunas órdenes de prueba
+- Crear algunas órdenes de prueba
 orders = []
 for i, user in enumerate(users[:5]):  # Solo tomamos los primeros 5 usuarios para crear órdenes
     order = Order.objects.create(
@@ -196,7 +196,7 @@ for i, user in enumerate(users[:5]):  # Solo tomamos los primeros 5 usuarios par
     order.items.set([item1, item2])  # Asignamos los elementos del menú (Pizza y Tacos)
     orders.append(order)
 
-# Verificar que las órdenes se crearon correctamente
+- Verificar que las órdenes se crearon correctamente
 for order in orders:
     print(order.id, order.customer.first_name, order.restaurant.name)   
 
